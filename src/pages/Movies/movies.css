@@ -1,0 +1,56 @@
+.movie-detail {
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    padding: 0 8px;
+    margin: 0 auto;
+}
+
+.movie-detail h1 {
+    margin: 14px 0;
+}
+
+.movie-detail img {
+    border-radius: 15px;
+    width: 800px;
+    max-width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+}
+
+.movie-detail h3 {
+    margin-top: 14px;
+}
+
+.movie-detail span {
+    margin: 8px 0;
+}
+
+.buttons button {
+    margin-right: 17px;
+    margin-top: 14px;
+    margin-left: 0;
+    font-size: 20px;
+    border: 0;
+    outline: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.65s;
+}
+
+.buttons a {
+    text-decoration: none;
+    color: #000;
+    transition: all 0.65s;
+}
+
+.buttons button:hover {
+    background-color: dodgerblue;
+    color: aliceblue;
+}
+
+.buttons a:hover {
+    color: aliceblue;
+}
