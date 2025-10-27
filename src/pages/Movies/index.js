@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import api from '../../services/api';
 import './movies.css';
 
 function Movies(){
     const { id } = useParams();
+    const navigation = useNavigate();
+
     const [movieDetail, setMovieDetail] = useState({});
     const [loading, setLoading] = useState(true);
     
@@ -22,13 +24,16 @@ function Movies(){
                 setMovieDetail(response.data);
                 console.log(response.data);
                 } else {
-                    console.log('erro inesperado');
+                    navigation("/", {replace : true});
+                    setLoading(false);
+                    return;
                 }
                 setLoading(false);
             })
             .catch(() => {
-                console.log('filme não encontrado');
+                navigation("/", {replace : true});
                 setLoading(false);
+                return;
             });
         }
 
@@ -37,7 +42,7 @@ function Movies(){
         return () => {
             console.log('componente desmontado');
         }
-    }, []);
+    }, [navigation, id]);
 
     if (loading) {
         return (
@@ -59,7 +64,7 @@ function Movies(){
             <div className="buttons">
                 <button>Salvar</button>
                 <button>
-                    <a href="a">
+                    <a target="_blank" rel="external" href={`https://youtube.com/results?search_query=${movieDetail.title} trailer`}>
                         Trailer
                     </a>
                 </button>
