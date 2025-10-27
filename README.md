@@ -39,6 +39,13 @@ Para utilizar o React Router no seu projeto:
 npm install react-router-dom
 ```
 
+### 6. Instalar o Axios
+O Axios é uma biblioteca para realizar requisições HTTP (como GET, POST, PUT, DELETE) de forma simples no React.
+
+Para instalá-lo, execute:
+```bash
+npm install axios
+
 ---
 
 ## 📜 Scripts Disponíveis

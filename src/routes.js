@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Movies from './pages/Movies';
 
-import Header from './Header';
+import Header from './components/Header';
 
 function RoutesApp() {
     return (
