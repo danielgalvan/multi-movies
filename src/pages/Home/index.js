@@ -5,6 +5,7 @@ import './home.css';
 
 function Home(){
     const [movies, setMovies] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect (() => {
 
@@ -20,11 +21,21 @@ function Home(){
             if (response?.data?.results) {
                 setMovies(response.data.results);
             }
+            setLoading(false);
         }
 
         loadMovies();
 
     }, []);
+
+    if (loading) {
+        return (
+            <div className="loader">
+                <h2>Loading...</h2>
+            </div>
+        );
+    }
+
     return (
         <div className="container">
             <div className="list-movies">
