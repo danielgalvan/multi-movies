@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../../services/api";
+import { Link } from 'react-router-dom';
+import './home.css';
 
 function Home(){
     const [movies, setMovies] = useState([]);
@@ -15,15 +17,27 @@ function Home(){
             }
         });
 
-        console.log(response.data.results);
+            if (response?.data?.results) {
+                setMovies(response.data.results);
+            }
         }
 
         loadMovies();
 
     }, []);
     return (
-        <div>
-            <h1>Página Home</h1>;
+        <div className="container">
+            <div className="list-movies">
+                {movies.map((movie) => {
+                    return (
+                        <article key={movie.id}>
+                            <strong>{movie.title}</strong>
+                            <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt={movie.title}></img>
+                            <Link to={`/movie/${movie.id}`}>Acessar</Link>
+                        </article>
+                    )
+                })}
+            </div>
         </div>
     )
 }
