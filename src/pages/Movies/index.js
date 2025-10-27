@@ -22,7 +22,6 @@ function Movies(){
             .then((response) => {
                 if (response.data) {
                 setMovieDetail(response.data);
-                console.log(response.data);
                 } else {
                     navigation("/", {replace : true});
                     setLoading(false);
@@ -44,6 +43,23 @@ function Movies(){
         }
     }, [navigation, id]);
 
+    function saveMovie() {
+        const myMovies = localStorage.getItem("@myMovies")
+
+        let savedMovies = JSON.parse(myMovies) || [];
+        
+        const hasMovie = savedMovies.some((savedMovie) => savedMovie.id === movieDetail.id);
+
+        if (hasMovie) {
+            alert('Esse filme ja foi adicionado');
+            return;
+        }
+
+        savedMovies.push(movieDetail);
+        localStorage.setItem("@myMovies", JSON.stringify(savedMovies));
+        alert('Filme Salvo com sucesso!');
+    }
+
     if (loading) {
         return (
             <div className="movie-detail">
@@ -62,9 +78,9 @@ function Movies(){
             <strong> Avaliação: {movieDetail.vote_average} / 10</strong>
 
             <div className="buttons">
-                <button>Salvar</button>
+                <button onClick={saveMovie}>Salvar</button>
                 <button>
-                    <a target="_blank" rel="external" href={`https://youtube.com/results?search_query=${movieDetail.title} trailer`}>
+                    <a target="blank" rel="external" href={`https://youtube.com/results?search_query=${movieDetail.title} trailer`}>
                         Trailer
                     </a>
                 </button>
