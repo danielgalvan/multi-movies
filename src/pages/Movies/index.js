@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import api from '../../services/api';
 import './movies.css';
@@ -39,7 +40,7 @@ function Movies(){
         loadMovieDetail();
 
         return () => {
-            console.log('componente desmontado');
+            
         }
     }, [navigation, id]);
 
@@ -51,13 +52,13 @@ function Movies(){
         const hasMovie = savedMovies.some((savedMovie) => savedMovie.id === movieDetail.id);
 
         if (hasMovie) {
-            alert('Esse filme ja foi adicionado');
+            toast.warn('Esse filme ja foi adicionado');
             return;
         }
 
         savedMovies.push(movieDetail);
         localStorage.setItem("@myMovies", JSON.stringify(savedMovies));
-        alert('Filme Salvo com sucesso!');
+        toast.success('Filme Salvo com sucesso!');
     }
 
     if (loading) {

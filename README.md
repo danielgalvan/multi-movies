@@ -47,6 +47,34 @@ Para instalá-lo, execute:
 npm install axios
 ```
 
+### 7. Instalar o React Toastify
+O **React Toastify** é uma biblioteca para exibir notificações elegantes e personalizáveis no React, de forma simples e prática.
+
+Para instalá-la, execute:
+```bash
+npm install react-toastify
+```
+
+Após a instalação, importe e configure o `ToastContainer` no seu componente principal (geralmente `App.js`):
+
+```javascript
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+function App() {
+  const notificar = () => toast.success('Operação realizada com sucesso!');
+
+  return (
+    <div>
+      <button onClick={notificar}>Mostrar Notificação</button>
+      <ToastContainer />
+    </div>
+  );
+}
+
+export default App;
+```
+
 ---
 
 ## 📜 Scripts Disponíveis
