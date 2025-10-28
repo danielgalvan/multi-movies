@@ -45,6 +45,7 @@ O Axios é uma biblioteca para realizar requisições HTTP (como GET, POST, PUT,
 Para instalá-lo, execute:
 ```bash
 npm install axios
+```
 
 ---
 
