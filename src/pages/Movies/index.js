@@ -44,7 +44,7 @@ function Movies(){
     }, [navigation, id]);
 
     function saveMovie() {
-        const myMovies = localStorage.getItem("@myMovies")
+        const myMovies = localStorage.getItem("@myMovies");
 
         let savedMovies = JSON.parse(myMovies) || [];
         
